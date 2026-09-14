@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warung Kreco Haqi — Jajanan & Minuman Tradisional</title>
+<meta name="description" content="Kreco, janggelan, dan rica-rica mentok buatan rumahan. Pesan langsung lewat WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EDE6D6;
+    --card: #F7F2E7;
+    --ink: #262019;
+    --ink-soft: #5B5142;
+    --leaf: #35513F;
+    --leaf-deep: #22352A;
+    --turmeric: #C68A2E;
+    --chili: #A63D28;
+    --line: rgba(38,32,25,0.16);
+    --radius: 3px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans', system-ui, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  a { color:inherit; }
+
+  img, svg { display:block; max-width:100%; }
+
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- Focus visibility ---------- */
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--leaf);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding: 28px 0 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .brand-mark{
+    font-size:1.5rem;
+    color:var(--leaf-deep);
+  }
+  .brand-sub{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+  nav a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    margin-left:22px;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  nav a:hover{ color:var(--ink); border-color: var(--ink-soft); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 64px 0 56px;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+    color:var(--leaf-deep);
+    max-width: 12ch;
+  }
+  .hero p.lede{
+    margin-top:18px;
+    max-width: 42ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+  }
+  .hero-actions{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding: 13px 22px;
+    border-radius: var(--radius);
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.98rem;
+    border: 1px solid transparent;
+    cursor:pointer;
+    transition: transform .12s ease, background-color .15s ease;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .btn-primary{
+    background: var(--leaf-deep);
+    color: #F7F2E7;
+  }
+  .btn-primary:hover{ background: var(--leaf); }
+  .btn-ghost{
+    background:transparent;
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ background: rgba(38,32,25,0.06); }
+
+  .hero-art{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-photo{
+    width:100%;
+    max-width:360px;
+    aspect-ratio: 4 / 5;
+    object-fit:cover;
+    border-radius: var(--radius);
+    box-shadow: 0 22px 44px rgba(34,53,42,0.22);
+  }
+
+  /* ---------- Divider ---------- */
+  .divider{ padding: 6px 0; }
+  .divider svg{ width:100%; height:14px; }
+
+  /* ---------- Section headings ---------- */
+  .section-head{
+    padding: 54px 0 8px;
+  }
+  .section-head h2{
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    color: var(--leaf-deep);
+  }
+  .section-head p{
+    margin-top:10px;
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  /* ---------- Menu ---------- */
+  .menu{
+    padding: 20px 0 20px;
+    border-top: 1px solid var(--line);
+  }
+  .menu-item{
+    display:grid;
+    grid-template-columns: 96px 1fr auto;
+    gap:22px;
+    align-items:center;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .menu-icon{
+    width:96px;
+    height:96px;
+    border-radius: var(--radius);
+    overflow:hidden;
+    background: var(--card);
+    flex-shrink:0;
+  }
+  .menu-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .menu-name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.35rem;
+    color: var(--ink);
+  }
+  .menu-desc{
+    margin-top:5px;
+    color: var(--ink-soft);
+    font-size:0.96rem;
+    max-width: 46ch;
+  }
+  .menu-side{
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:10px;
+  }
+  .menu-price{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.25rem;
+    color: var(--chili);
+    white-space:nowrap;
+  }
+  .order-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 9px 16px;
+    background: var(--leaf-deep);
+    color:#F7F2E7;
+    border-radius: var(--radius);
+    text-decoration:none;
+    font-size:0.88rem;
+    font-weight:600;
+    white-space:nowrap;
+    transition: background-color .15s ease, transform .12s ease;
+  }
+  .order-btn:hover{ background: var(--leaf); }
+  .order-btn:active{ transform: translateY(1px); }
+  .order-btn svg{ width:16px; height:16px; flex-shrink:0; }
+
+  /* ---------- How to order ---------- */
+  .steps{
+    padding: 10px 0 20px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .step{
+    border-top: 2px solid var(--turmeric);
+    padding-top:16px;
+  }
+  .step-num{
+    font-family:'Fraunces', serif;
+    font-size:0.95rem;
+    color: var(--turmeric);
+    font-weight:600;
+  }
+  .step h3{
+    margin-top:8px;
+    font-size:1.12rem;
+    color: var(--ink);
+  }
+  .step p{
+    margin-top:8px;
+    color: var(--ink-soft);
+    font-size:0.94rem;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top: 50px;
+    border-top: 1px solid var(--line);
+    background: var(--leaf-deep);
+    color: #E9E4D6;
+    padding: 40px 0 30px;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  footer h3{
+    color:#fff;
+    font-size:1.3rem;
+  }
+  footer p{ color: #C9C2AC; font-size:0.92rem; margin-top:8px; }
+  .footer-wa{
+    margin-top:16px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    border-bottom:1px solid rgba(255,255,255,0.35);
+    padding-bottom:2px;
+  }
+  .footer-note{
+    font-size:0.82rem;
+    color:#9B937C;
+    margin-top:30px;
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding-top:18px;
+  }
+
+  @media (max-width: 760px){
+    .hero{ grid-template-columns: 1fr; padding-top:40px; }
+    .hero-art{ order:-1; }
+    .menu-item{
+      grid-template-columns: 72px 1fr;
+    }
+    .menu-icon{ width:72px; height:72px; }
+    .menu-side{
+      grid-column: 1 / -1;
+      align-items:flex-start;
+      text-align:left;
+      flex-direction:row;
+      justify-content:space-between;
+      margin-top:6px;
+    }
+    .steps{ grid-template-columns:1fr; }
+    .footer-row{ flex-direction:column; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand">
+      <span class="display brand-mark">Warung Kreco Haqi</span>
+    </div>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#cara-pesan">Cara pesan</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div>
+    <h1>Rasa dapur rumah, dari Kreco sampai rica-rica mentok</h1>
+    <p class="lede">Tiga resep turun-temurun yang biasa dimasak sendiri di rumah: kreco gurih, janggelan segar penyejuk badan, dan rica-rica mentok pedas nampol. Dipesan lewat WhatsApp, dimasak begitu pesanan masuk.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn btn-primary">Lihat menu &amp; harga</a>
+      <a href="https://wa.me/6285792677261" class="btn btn-ghost" target="_blank" rel="noopener">Chat langsung</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <img src="images/es-janggelan.jpg" alt="Segelas Es Janggelan dengan santan dan biji selasih" class="hero-photo">
+  </div>
+</section>
+
+<div class="wrap divider" aria-hidden="true">
+  <svg viewBox="0 0 1000 14" preserveAspectRatio="none"><path d="M0 7 Q 250 0, 500 7 T 1000 7" stroke="#35513F" stroke-opacity="0.3" stroke-width="1.5" fill="none"/></svg>
+</div>
+
+<section class="wrap section-head" id="menu">
+  <h2>Menu</h2>
+  <p>Semua dimasak sesuai pesanan hari itu. Harga per porsi/kemasan seperti tercantum di bawah.</p>
+</section>
+
+<section class="wrap menu">
+
+  <div class="menu-item">
+    <div class="menu-icon">
+      <img src="images/kreco.jpg" alt="Kreco dimasak bumbu bawang" class="menu-photo">
+    </div>
+    <div>
+      <div class="menu-name">Kreco</div>
+      <div class="menu-desc">Camilan gurih renyah, digoreng garing, cocok untuk teman santai atau oleh-oleh.</div>
+    </div>
+    <div class="menu-side">
+      <div class="menu-price">Rp5.000</div>
+      <a class="order-btn" target="_blank" rel="noopener"
+         href="https://wa.me/6285792677261?text=Halo%2C%20saya%20mau%20beli%20Kreco">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-3.3-.7-2.8-1.1-4.6-3.9-4.8-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2.1.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.4-.2.8.2.4.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.8 1.7.4.2.6.1.8-.1.2-.2.9-1 1.1-1.4.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.5Z"/></svg>
+        Pesan via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-icon">
+      <img src="images/es-janggelan.jpg" alt="Es Janggelan segar dengan santan" class="menu-photo">
+    </div>
+    <div>
+      <div class="menu-name">Janggelan</div>
+      <div class="menu-desc">Minuman cincau hitam khas, segar dan menyejukkan badan, disajikan dingin.</div>
+    </div>
+    <div class="menu-side">
+      <div class="menu-price">Rp3.000</div>
+      <a class="order-btn" target="_blank" rel="noopener"
+         href="https://wa.me/6285792677261?text=Halo%2C%20saya%20mau%20beli%20Janggelan">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-3.3-.7-2.8-1.1-4.6-3.9-4.8-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2.1.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.4-.2.8.2.4.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.8 1.7.4.2.6.1.8-.1.2-.2.9-1 1.1-1.4.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.5Z"/></svg>
+        Pesan via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-icon">
+      <img src="images/rica-mentok.jpg" alt="Rica-rica Mentok pedas dalam mangkuk" class="menu-photo">
+    </div>
+    <div>
+      <div class="menu-name">Rica-rica Mentok</div>
+      <div class="menu-desc">Daging mentok (itik) dimasak bumbu rica pedas meresap, disajikan hangat.</div>
+    </div>
+    <div class="menu-side">
+      <div class="menu-price">Rp15.000</div>
+      <a class="order-btn" target="_blank" rel="noopener"
+         href="https://wa.me/6285792677261?text=Halo%2C%20saya%20mau%20beli%20Rica-rica%20Mentok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-3.3-.7-2.8-1.1-4.6-3.9-4.8-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2.1.1.2.1.4 0 .6-.1.2-.2.4-.4.6-.2.2-.4.4-.2.8.2.4.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.8 1.7.4.2.6.1.8-.1.2-.2.9-1 1.1-1.4.2-.4.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.2.6.4.1.2.1.9-.1 1.5Z"/></svg>
+        Pesan via WhatsApp
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<section class="wrap section-head" id="cara-pesan">
+  <h2>Cara pesan</h2>
+</section>
+<section class="wrap steps">
+  <div class="step">
+    <div class="step-num">Langkah 1</div>
+    <h3>Pilih menu</h3>
+    <p>Gulir ke bagian menu dan lihat harga Kreco, Janggelan, atau Rica-rica Mentok.</p>
+  </div>
+  <div class="step">
+    <div class="step-num">Langkah 2</div>
+    <h3>Klik tombol pesan</h3>
+    <p>Tekan "Pesan via WhatsApp" pada menu yang diinginkan. WhatsApp akan terbuka otomatis dengan pesan yang sudah terisi.</p>
+  </div>
+  <div class="step">
+    <div class="step-num">Langkah 3</div>
+    <h3>Kirim & tunggu balasan</h3>
+    <p>Kirim pesannya, lalu tunggu konfirmasi jumlah, total harga, dan waktu pengambilan/pengantaran.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>
+      <h3>Warung Kreco Haqi</h3>
+      <p>Pemesanan hanya melalui WhatsApp.</p>
+      <a class="footer-wa" href="https://wa.me/6285792677261" target="_blank" rel="noopener">
+        +62 857-9267-7261
+      </a>
+    </div>
+  </div>
+  <div class="wrap footer-note">
+    © <span id="year"></span> Warung Kreco Haqi. Semua pesanan diproses manual lewat WhatsApp.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
